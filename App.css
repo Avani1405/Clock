@@ -1,0 +1,33 @@
+.clock-container {
+  background: linear-gradient(145deg, #fc75d3, #2575fc);
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: white;
+  width: 400px;
+  max-width: 90%;
+}
+
+.time-display {
+  font-size: 2.8rem;
+  margin: 1rem 0;
+  padding: 1rem 2rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+}
+
+footer {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #e0e0e0;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
