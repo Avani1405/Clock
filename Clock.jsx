@@ -1,37 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateTime } from './store/clockSlice';
 import './App.css';
 
 const Clock = () => {
-  const [time, setTime] = useState(new Date());
+  const dispatch = useDispatch();
+  const time = useSelector(state => state.clock.time);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date());
+    const interval = setInterval(() => {
+      dispatch(updateTime());
     }, 1000);
-    return () => clearInterval(timer);
-  }, []);
 
-  const formattedTime = time.toLocaleTimeString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: true,
-  });
-
-  const formattedDate = time.toLocaleDateString('en-US', {
-    weekday: 'long',
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
+    return () => clearInterval(interval); // cleanup on unmount
+  }, [dispatch]);
 
   return (
-    <div className="clock-container">
-      <h2>Current Time</h2>
-      <div className="time-display">{formattedTime}</div>
-      <p>{formattedDate}</p>
-    
-     
+    <div>
+      <h2>🕒 Current Time:</h2>
+      <p style={{ fontSize: '2rem' }}>{time}</p>
     </div>
   );
 };
